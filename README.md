@@ -2,7 +2,7 @@
 
 This documents seeks to create a spec for managing uploads and retrieval of media (images, audio, video) in Nostr clients. It is simple so that clients can get it working quickly with multiple media hosts (nostr.build, nostrimg, void.cat, etc.). It is designed with the assumption that it will likely be replaced or altered to the point of being unrecognizable in the future. The point of it is to get everyone on the same page with something that work, for now.
 
-**The goal of this spec is that users can add a host by adding only the \<hostname\> to their client, and it will *just work*.**
+**The goal of this spec is that users can add a host by adding only the `<hostname>` to their client, and it will *just work*.**
 
 # Uploading Media
 
@@ -58,9 +58,9 @@ The SHA-256 hash of the file serves three purposes.
 Since the file can be identified by it's hash, media hosts can implement a feature that lets users change the name of their file without having to do anything.
 
 Example:
-1. Server stores file as /\<sha256\>/_.jpg
-2. User requests /\<sha256\>/thisisfine.jpg
-3. Server returns /\<sha256\>/_.jpg
+1. Server stores file as `/<sha256>/_.jpg`
+2. User requests `/<sha256>/thisisfine.jpg`
+3. Server returns `/<sha256>/_.jpg`
 
 ### Type (optional)
 
