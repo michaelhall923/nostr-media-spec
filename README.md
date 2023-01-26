@@ -83,7 +83,7 @@ Clients/users can append optional query parameters to make on-the-fly edits of t
   - 16:9
   - etc.
 
-### References
+# References
 
 - https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139
 - https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#basic_example
