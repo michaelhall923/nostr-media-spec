@@ -1,0 +1,1 @@
+# nostr-media-spec
