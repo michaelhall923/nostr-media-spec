@@ -3,14 +3,50 @@
 This documents seeks to create a spec for managing uploads and retrieval of media (images, audio, video) in Nostr clients. It is simple so that clients can get it working quickly with multiple media hosts (nostr.build, nostrimg, void.cat, etc.). It is designed with the assumption that it will likely be replaced or altered to the point of being unrecognizable in the future. The point of it is to get everyone on the same page with something that work, for now.
 
 **The goal of this spec is that users can add a host by adding only the `<hostname>` to their client, and it will *just work*.**
+  
+# Getting Host Info
+
+Hosts should have a file at `https://<hostname>/.well-known/nostr.json` with the following info.
+
+```
+{
+  "media": {
+    "apiPath": String, // Location of API
+    "mediaPath": String, // Location of file storage
+    "contentPolicy": {
+      "allowAdultContent": Boolean,
+      "allowViolentContent": Boolean
+    }
+  }
+}
+```
+
+Example:
+```
+{
+  "media": {
+    "apiPath": "https://nostrimg.com/api"
+    "mediaPath": "https://i.nostrimg.com"
+    "contentPolicy": {
+      "allowAdultContent": false,
+      "allowViolentContent": true
+    }
+  },
+  "names" {
+    // NIP-05 stuff goes here
+  }
+}
+```
+
+*Make sure to setup CORS properly 😉*
 
 # Uploading Media
 
 ## Request
 
 ```
-POST <upload_endpoint>
-Content-Type: multipart/form-data; boundary=--<boundary>
+POST <api_path>/upload
+Content-Type: multipart/form-data; boundary=<boundary>
 
 --<boundary>
 Content-Disposition: form-data; name="file"; filename="<filename>.<type>"
@@ -25,7 +61,7 @@ Content-Type: <mimetype>
 ```
 {
   "data": {
-    "link": String?
+    "link": String? // Using the schema: <media_path>/<sha256>/<filename>.<type>
   },
   "success": Boolean
   "status": Int
@@ -37,7 +73,7 @@ Content-Type: <mimetype>
 ## URL Schema
 
 ```
-https://<hostname>/<sha256>/<filename>.<type>?<query_params>
+<media_path>/<sha256>/<filename>.<type>?<query_params>
 ```
 Example:
 ```
