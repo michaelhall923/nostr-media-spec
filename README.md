@@ -11,11 +11,12 @@ Hosts should have a file at `https://<hostname>/.well-known/nostr.json` with the
 ```
 {
   "media": {
-    "apiPath": String, // Location of API
-    "mediaPath": String, // Location of file storage
+    "apiPath": string, // Location of API
+    "mediaPath": string, // Location of file storage
+    "acceptedMimetypes": Array<string>,
     "contentPolicy": {
-      "allowAdultContent": Boolean,
-      "allowViolentContent": Boolean
+      "allowAdultContent": boolean,
+      "allowViolentContent": boolean
     }
   }
 }
@@ -26,7 +27,13 @@ Example:
 {
   "media": {
     "apiPath": "https://nostrimg.com/api"
-    "mediaPath": "https://i.nostrimg.com"
+    "mediaPath": "https://i.nostrimg.com",
+    "acceptedMimetypes": [
+      "image/jpg",
+      "image/png",
+      "image/gif",
+      "video/mp4"
+    ],
     "contentPolicy": {
       "allowAdultContent": false,
       "allowViolentContent": true
@@ -61,10 +68,10 @@ Content-Type: <mimetype>
 ```
 {
   "data": {
-    "link": String? // Using the schema: <media_path>/<sha256>/<filename>.<type>
+    "link": string? // Using the schema: <media_path>/<sha256>/<filename>.<type>
   },
-  "success": Boolean
-  "status": Int
+  "success": boolean
+  "status": number
 }
 ```
 
