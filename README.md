@@ -26,7 +26,7 @@ Example:
 ```
 {
   "media": {
-    "apiPath": "https://nostrimg.com/api"
+    "apiPath": "https://nostrimg.com/api",
     "mediaPath": "https://i.nostrimg.com",
     "acceptedMimetypes": [
       "image/jpg",
@@ -70,7 +70,8 @@ Content-Type: <mimetype>
   "data": {
     "link": string? // Using the schema: <media_path>/<sha256>/<filename>.<type>
   },
-  "success": boolean
+  "message": string?,
+  "success": boolean,
   "status": number
 }
 ```
