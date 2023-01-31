@@ -127,6 +127,11 @@ Clients/users can append optional query parameters to make on-the-fly edits of t
   - 16:9
   - etc.
 
+# Example Implementations
+
+- [nostr-media-server](https://github.com/bndw/nostr-media-server) - Media server (Go)
+- [nostrimg](https://github.com/michaelhall923/nostrimg) - Image hosting (Express.js)
+
 # References
 
 - https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139
